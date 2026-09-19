@@ -64,4 +64,20 @@ export class BookingService {
             this.isLocked = false;
         }
     }
+
+    endRide(rideId: string, dropLocation: Point): {ride: Ride; finalFare: number} {
+        const ride = this.rideRepo.findById(rideId);
+        if(!ride || ride.status !== RideStatus.IN_PROGRESS) throw new Error("Active ride not found");
+
+        const distance = calculateDistance(ride.pickup, dropLocation);
+
+        const gross = this.pricingStrategy.calculateFare(distance, ride.requestedCarType);
+        const {netAmount} = this.couponApplier.apply(ride.couponCode, gross);
+
+        this.rideRepo.updateStatus(rideId, RideStatus.COMPLETED, netAmount);
+        this.driverRepo.updateLocation(ride.driverId, dropLocation);
+        this.driverRepo.setAvailability(ride.driverId, true);
+
+        return {ride, finalFare:netAmount};
+    }
 }
