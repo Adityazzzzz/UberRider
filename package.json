@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "ts-node src/demo.ts"
+    "start": "ts-node -r tsconfig-paths/register src/cmd/main.ts"
   },
   "keywords": [],
   "author": "",
