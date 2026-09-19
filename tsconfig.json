@@ -9,6 +9,7 @@
     "strict": true,
     "skipLibCheck": true,
     "types": ["jest"],
+    "ignoreDeprecations": "6.0",
     "baseUrl": "./src",
     "paths": {
       "@domain/*": ["domain/*"],

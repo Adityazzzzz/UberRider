@@ -4,6 +4,8 @@ import {Ride, RideRepository, RideStatus} from "@domain/ride";
 import {PricingStrategy, CouponApplier} from "@usecase/pricing/strategy";
 import {DriverMatchingStrategy} from "@usecase/matching/strategy";
 
+
+// Acts as Manager
 export class BookingService {
     private isLocked = false; // Concurrency lock
 
@@ -24,7 +26,7 @@ export class BookingService {
         couponCode?: string,
         radiusKm: number = 5
     ): Promise<Ride> {
-        while(this.isLocked) await new Promise((r) => setTimeout(r, 5));
+        while(this.isLocked) await new Promise((r) => setTimeout(r, 5)); // wait for 5 sec for manager
         this.isLocked = true;
 
         try{

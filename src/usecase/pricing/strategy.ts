@@ -11,7 +11,7 @@ export class TieredPricingStrategy implements PricingStrategy {
         [CarType.HATCHBACK]: 1.0,
         [CarType.SEDAN]: 1.25,
     };
-    private readonly tiers = [
+    private readonly tiers = [ // I can simply add a new pricing model here
         { startKm: 0,endKm: 2,rate: 10 },
         { startKm: 2,endKm: 5,rate: 8 },
         { startKm: 5,endKm: Infinity,rate: 5 },

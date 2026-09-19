@@ -11,7 +11,7 @@ export class NearestDriverStrategy implements DriverMatchingStrategy {
 
         for(const d of drivers) {
             if(!d.isAvailable) continue;
-            const dist = calculateDistance(d.location, pickup);
+            const dist = calculateDistance(d.location, pickup); // currently using Euclidean dist 
             if(dist <= radiusKm && dist < minDist) {
                 minDist = dist;
                 best = d;
