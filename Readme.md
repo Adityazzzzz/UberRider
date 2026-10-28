@@ -1,6 +1,7 @@
 # Ride Hailing Backend Service
 
 This project implements a backend orchestration system for a ride-hailing platform, designed with Domain-Driven Design (DDD) principles and tested using Jest.
+
 ![alt text](image.png)
 
 ## 1. Assumptions Made
